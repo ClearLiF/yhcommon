@@ -6,9 +6,9 @@ import lombok.ToString;
 
 
 /**
- * @author blade
- * @author blade
- * NoArgsConstructor 自动生成无参构造函数
+ * The type Response result.
+ *
+ * @author clearli
  */
 @Data
 @ToString
@@ -30,15 +30,31 @@ public class ResponseResult implements Response {
      */
     String message;
 
+    /**
+     * Instantiates a new Response result.
+     *
+     * @param resultCode the result code
+     */
     public ResponseResult(ResultCode resultCode){
         this.success = resultCode.success();
         this.code = resultCode.code();
         this.message = resultCode.message();
     }
 
+    /**
+     * Success response result.
+     *
+     * @return the response result
+     */
     public static ResponseResult success(){
         return new ResponseResult(CommonCode.SUCCESS);
     }
+
+    /**
+     * Fail response result.
+     *
+     * @return the response result
+     */
     public static ResponseResult fail(){
         return new ResponseResult(CommonCode.FAIL);
     }

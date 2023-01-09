@@ -20,25 +20,29 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
+ * The type Stream utils.
+ *
  * @author : CLEAR Li
  * @version : V1.0
  * @className : StreamUtils
  * @packageName : com.yinghuo.framework.utils
  * @description : 流处理类
  * @date : 2020-10-24 13:19
- **/
+ */
 @Slf4j
 public class StreamUtils {
 
     /**
      * 将pojo类转换为vo
      *
+     * @param <T>  the type parameter
+     * @param <V>  the type parameter
      * @param list 源数据list
      * @param cls  目标数据class
-     * @return java.util.List<V>
+     * @return java.util.List<V> pojo to vo
      * @description
      * @author ClearLi
-     * @date 2020/10/24 13:30
+     * @date 2020 /10/24 13:30
      */
     public static <T, V> List<V> getPojoToVo(List<T> list, Class<V> cls) {
         if (CollectionUtil.isEmpty(list)) {
@@ -60,12 +64,15 @@ public class StreamUtils {
     /**
      * 将pojo类转换为vo
      *
-     * @param list 源数据list
-     * @param cls  目标数据class
-     * @return java.util.List<V>
+     * @param <T>       the type parameter
+     * @param <V>       the type parameter
+     * @param list      源数据list
+     * @param cls       目标数据class
+     * @param functions the functions
+     * @return java.util.List<V> modify pojo to vo
      * @description
      * @author ClearLi
-     * @date 2020/10/24 13:30
+     * @date 2020 /10/24 13:30
      */
     public static <T, V> List<V> getModifyPojoToVo(List<T> list, Class<V> cls, Function<V, V>... functions) {
         if (CollectionUtil.isEmpty(list)) {
@@ -94,12 +101,15 @@ public class StreamUtils {
     /**
      * 将pojo类转换为vo
      *
-     * @param list 源数据list
-     * @param cls  目标数据class
-     * @return java.util.List<V>
+     * @param <T>   the type parameter
+     * @param <V>   the type parameter
+     * @param list  源数据list
+     * @param cls   目标数据class
+     * @param total the total
+     * @return java.util.List<V> pojo to vo to response
      * @description
      * @author ClearLi
-     * @date 2020/10/24 13:30
+     * @date 2020 /10/24 13:30
      */
     public static <T, V> QueryResponseResult<V> getPojoToVoToResponse(List<T> list, Class<V> cls, long total) {
         List<V> listResult = getPojoToVo(list, cls);
@@ -112,12 +122,16 @@ public class StreamUtils {
     /**
      * 将pojo类转换为vo
      *
-     * @param list 源数据list
-     * @param cls  目标数据class
-     * @return java.util.List<V>
+     * @param <T>       the type parameter
+     * @param <V>       the type parameter
+     * @param list      源数据list
+     * @param cls       目标数据class
+     * @param total     the total
+     * @param functions the functions
+     * @return java.util.List<V> modify pojo to vo to response
      * @description
      * @author ClearLi
-     * @date 2020/10/24 13:30
+     * @date 2020 /10/24 13:30
      */
     @SafeVarargs
     public static <T, V> QueryResponseResult<V> getModifyPojoToVoToResponse(List<T> list, Class<V> cls, long total, Function<V, V>... functions) {
@@ -128,6 +142,17 @@ public class StreamUtils {
         return new QueryResponseResult<>(CommonCode.SUCCESS, result);
     }
 
+    /**
+     * Modify convert query response result.
+     *
+     * @param <T>      the type parameter
+     * @param <V>      the type parameter
+     * @param list     the list
+     * @param cls      the cls
+     * @param total    the total
+     * @param function the function
+     * @return the query response result
+     */
     public static <T, V> QueryResponseResult<V> modifyConvert(List<T> list, Class<V> cls, long total, Function<T, V> function) {
         List<V> listResult = modifyConvert(list, cls, function);
         QueryResult<V> result = new QueryResult<>();
@@ -140,12 +165,15 @@ public class StreamUtils {
     /**
      * 将pojo类转换为vo
      *
-     * @param list 源数据list
-     * @param cls  目标数据class
-     * @return java.util.List<V>
+     * @param <T>      the type parameter
+     * @param <V>      the type parameter
+     * @param list     源数据list
+     * @param cls      目标数据class
+     * @param function the function
+     * @return java.util.List<V> list
      * @description
      * @author soundtao
-     * @date 2020/10/24 13:30
+     * @date 2020 /10/24 13:30
      */
     public static <T, V> List<V> modifyConvert(List<T> list, Class<V> cls, Function<T, V> function) {
         if (cn.hutool.core.collection.CollectionUtil.isEmpty(list)) {
@@ -173,12 +201,13 @@ public class StreamUtils {
     /**
      * 封装返回对象
      *
-     * @param list list集合
+     * @param <T>   the type parameter
+     * @param list  list集合
      * @param total 总数
-     * @return com.yinghuo.framework.response.QueryResponseResult<T>
+     * @return com.yinghuo.framework.response.QueryResponseResult<T> simple response
      * @description
      * @author ClearLi
-     * @date 2021/3/16 18:11
+     * @date 2021 /3/16 18:11
      */
     public static <T> QueryResponseResult<T> getSimpleResponse(List<T> list, long total) {
         QueryResult<T> result = new QueryResult<>();
@@ -193,12 +222,14 @@ public class StreamUtils {
     /**
      * 将pojo类转换为vo
      *
+     * @param <T> the type parameter
+     * @param <V> the type parameter
      * @param obj 源数据
      * @param cls 目标数据class
-     * @return java.util.List<V>
+     * @return java.util.List<V> v
      * @description
      * @author soundtao
-     * @date 2020/10/24 13:30
+     * @date 2020 /10/24 13:30
      */
     public static <T, V> V simpleConvert(T obj, Class<V> cls) {
         V v = null;
@@ -216,11 +247,12 @@ public class StreamUtils {
     /**
      * 封装返回对象
      *
-     * @param t 单例对象
-     * @return com.yinghuo.framework.response.QueryResponseResult<T>
+     * @param <T> the type parameter
+     * @param t   单例对象
+     * @return com.yinghuo.framework.response.QueryResponseResult<T> singleton
      * @description
      * @author ClearLi
-     * @date 2021/3/16 18:11
+     * @date 2021 /3/16 18:11
      */
     public static <T> QueryResponseResult<T> getSingleton(T t ) {
         QueryResult<T> result = new QueryResult<>();
@@ -232,11 +264,13 @@ public class StreamUtils {
     /**
      * 封装返回对象
      *
-     * @param t 单例对象
-     * @return com.yinghuo.framework.response.QueryResponseResult<T>
+     * @param <T>        the type parameter
+     * @param t          单例对象
+     * @param resultCode the result code
+     * @return com.yinghuo.framework.response.QueryResponseResult<T> singleton
      * @description
      * @author ClearLi
-     * @date 2021/3/16 18:11
+     * @date 2021 /3/16 18:11
      */
     public static <T> QueryResponseResult<T> getSingleton(T t , ResultCode resultCode) {
         QueryResult<T> result = new QueryResult<>();
@@ -248,10 +282,11 @@ public class StreamUtils {
     /**
      * 封装返回对象
      *
-     * @return com.yinghuo.framework.response.QueryResponseResult<T>
+     * @param <T> the type parameter
+     * @return com.yinghuo.framework.response.QueryResponseResult<T> empty
      * @description
      * @author ClearLi
-     * @date 2021/3/16 18:11
+     * @date 2021 /3/16 18:11
      */
     public static <T> QueryResponseResult<T> getEmpty() {
         QueryResult<T> result = new QueryResult<>();
@@ -264,11 +299,14 @@ public class StreamUtils {
     /**
      * 封装返回对象
      *
-     * @param t 单例对象
-     * @return com.yinghuo.framework.response.QueryResponseResult<T>
+     * @param <T> the type parameter
+     * @param <V> the type parameter
+     * @param t   单例对象
+     * @param cls the cls
+     * @return com.yinghuo.framework.response.QueryResponseResult<T> singleton
      * @description
      * @author ClearLi
-     * @date 2021/3/16 18:11
+     * @date 2021 /3/16 18:11
      */
     public static <T, V> QueryResponseResult<V> getSingleton(T t , Class<V> cls) {
         V v = null;
@@ -293,6 +331,13 @@ public class StreamUtils {
 
     }
 
+    /**
+     * One convert modify.
+     *
+     * @param source     the source
+     * @param dateFormat the date format
+     * @param target     the target
+     */
     public static void oneConvertModify(Object source, String dateFormat, Object target) {
         if (dateFormat == null) {
             dateFormat = "yyyy-MM-dd HH:mm:ss";

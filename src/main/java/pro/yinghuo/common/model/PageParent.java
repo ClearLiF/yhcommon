@@ -6,7 +6,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
- * @author: zhanghp
+ * @author: clearli
  * @date: 2022-06-25 1:02
  */
 @ApiModel(value = "分页")
