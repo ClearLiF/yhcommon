@@ -43,7 +43,7 @@ public class ObjectUtils {
             return (Boolean) obj;
         } else if (obj instanceof Long) {
             Long longVal = (Long) obj;
-            return longVal != 0L;
+            return longVal == 0L;
         }
         return false;
     }
