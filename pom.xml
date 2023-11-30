@@ -81,15 +81,10 @@
 
     <!-- 只需在父工程中添加，子工程不用添加 -->
     <distributionManagement>
-        <snapshotRepository>
-            <id>maven-public</id> <!-- 此处id与setting.xml中的服务id保持一致 -->
-            <name>oss Snapshots Repository</name>
-            <url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
-        </snapshotRepository>
         <repository>
-            <id>maven-public</id> <!-- 此处id与setting.xml中的服务id保持一致 -->
-            <name>oss Staging Repository</name>
-            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+            <id>maven-yinghuo</id>
+            <name>Nexus Releases Repository</name>
+            <url>http://192.168.0.110:8082/repository/maven-yinghuo/</url>
         </repository>
     </distributionManagement>
 
@@ -131,38 +126,38 @@
             </plugin>
 
             <!-- gpg认证 只需在父工程中添加 -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-gpg-plugin</artifactId>
-                <version>1.6</version>
-                <executions>
-                    <execution>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>sign</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-gpg-plugin</artifactId>-->
+<!--                <version>1.6</version>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <phase>verify</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>sign</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
         </plugins>
     </build>
 
-    <repositories>
-        <repository>
-            <id>central</id>
-            <name>aliyun maven</name>
-            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
-            <layout>default</layout>
-            <!-- 是否开启发布版构件下载 -->
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <!-- 是否开启快照版构件下载 -->
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
+<!--    <repositories>-->
+<!--        <repository>-->
+<!--            <id>central</id>-->
+<!--            <name>aliyun maven</name>-->
+<!--            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>-->
+<!--            <layout>default</layout>-->
+<!--            &lt;!&ndash; 是否开启发布版构件下载 &ndash;&gt;-->
+<!--            <releases>-->
+<!--                <enabled>true</enabled>-->
+<!--            </releases>-->
+<!--            &lt;!&ndash; 是否开启快照版构件下载 &ndash;&gt;-->
+<!--            <snapshots>-->
+<!--                <enabled>false</enabled>-->
+<!--            </snapshots>-->
+<!--        </repository>-->
+<!--    </repositories>-->
 
 
 </project>
